@@ -60,8 +60,10 @@ python3 train_model.py --input ./XRD_epoch5.pkl --output learning_curve.csv --ba
 ### Papers
 - AdaCos: https://arxiv.org/abs/1905.00292
 - 1D-RegNet: https://arxiv.org/abs/2008.04063
+- Physics-informed data augmentation: https://arxiv.org/abs/1811.08425v2
 
 ### Implementation
 - AdaCos: https://github.com/4uiiurz1/pytorch-adacos/blob/master/metrics.py
 - 1D-RegNet: https://github.com/hsd1503/resnet1d
+- Physics-informed data augmentation: https://github.com/PV-Lab/autoXRD
 - Top k accuracy: https://gist.github.com/weiaicunzai/2a5ae6eac6712c70bde0630f3e76b77b
