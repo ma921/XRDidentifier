@@ -1,6 +1,6 @@
 # XRDidentifier
 Pytorch implementation of XRD spectral identification from COD database. <br>
-Details are explained on my blog on Medium.
+Details are explained on my blog on Medium. <br>
 https://towardsdatascience.com/automatic-spectral-identification-using-deep-metric-learning-with-1d-regnet-and-adacos-8b7fb36f2d5f
 
 # Features
