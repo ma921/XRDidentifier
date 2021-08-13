@@ -55,3 +55,13 @@ python3 train_model.py --input ./XRD_epoch5.pkl --output learning_curve.csv --ba
 | Train         | Validation    | Test  |
 | ------------- |:-------------:| -----:|
 | 99.41         | 97.30         | 97.30 |
+
+# Citation
+### Papers
+- AdaCos: https://arxiv.org/abs/1905.00292
+- 1D-RegNet: https://arxiv.org/abs/2008.04063
+
+### Implementation
+- AdaCos: https://github.com/4uiiurz1/pytorch-adacos/blob/master/metrics.py
+- 1D-RegNet: https://github.com/hsd1503/resnet1d
+- Top k accuracy: https://gist.github.com/weiaicunzai/2a5ae6eac6712c70bde0630f3e76b77b
