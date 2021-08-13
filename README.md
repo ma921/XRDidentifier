@@ -39,12 +39,18 @@ python3 convertXRDspectra.py --input ./lithium_datasets.pkl --batch 8 --n_aug 5
 ```python
 python3 train_model.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batch 16 --n_epoch 100
 ```
-Trained model -> *regnet1d_adacos_epoch100.pt*
-Learning curve -> *learning_curve.csv*
-Correspondence between numerical int label and crystal names -> *material_labels.csv*
+*Results*
+- Trained model -> *regnet1d_adacos_epoch100.pt*
+- Learning curve -> *learning_curve.csv*
+- Correspondence between numerical int label and crystal names -> *material_labels.csv*
 
 # Result
-Lithium compounds (8,172) at epoch 100
+- Database: Lithium compounds (8,172)
+- XRD: 2 theta 0 - 120 degree with 0.02 width (6,000 dims)
+- model: 1D-CNN (1D-RegNet) + Deep metric learning (AdaCos)
+- Loss: CrossEntropyLoss
+- Metric: Top 5 accuracy (%)
+- epoch: 100
 | Train         | Validation    | Test  |
 | ------------- |:-------------:| -----:|
 | 99.41         | 97.30         | 97.30 |
