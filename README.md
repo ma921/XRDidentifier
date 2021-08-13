@@ -16,14 +16,14 @@ Physics-informed data augmentation
 
 # Dataset Construction
 ### 1. download cif files from COD
-Go to COD homepage, search and download the cif URL list. <br>
+Go to the COD homepage, search and download the cif URL list. <br>
 http://www.crystallography.net/cod/search.html
 ```
 python3 download_cif_from_cod.py --input ./COD-selection.txt --output ./cif
 ```
 
 ### 2. convert cif into XRD spectra
-First, check the cif files. (some files are broken or physically-meaningless)
+First, check the cif files. (some files are broken or physically meaningless)
 ```
 python3 read_cif.py --input ./cif --output ./lithium_datasets.pkl
 ```
