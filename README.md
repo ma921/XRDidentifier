@@ -16,7 +16,7 @@ Physics-informed data augmentation
 
 # Dataset Construction
 ### 1. download cif files from COD
-Go to COD homepage, search and download the cif URL list.
+Go to COD homepage, search and download the cif URL list. <br>
 http://www.crystallography.net/cod/search.html
 ```python
 python3 download_cif_from_cod.py --input ./COD-selection.txt --output ./cif
