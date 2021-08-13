@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
 import urllib
+import urllib.request
 import os
 import argparse
 
