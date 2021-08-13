@@ -27,21 +27,21 @@ First, check the cif files. (some files are broken or physically-meaningless)
 ```python
 python3 read_cif.py --input ./cif --output ./lithium_datasets.pkl
 ```
-lithium_datasets.pkl will be created.
+*lithium_datasets.pkl* will be created.
 
 Second, convert the checked results into XRD spectra database.
 ```python
 python3 convertXRDspectra.py --input ./lithium_datasets.pkl --batch 8 --n_aug 5
 ```
-XRD_epoch5.pkl will be created.
+*XRD_epoch5.pkl* will be created.
 
 # Train
 ```python
 python3 train_model.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batch 16 --n_epoch 100
 ```
-Trained model -> regnet1d_adacos_epoch100.pt
-Learning curve -> learning_curve.csv
-Correspondence between numerical int label and crystal names -> material_labels.csv
+Trained model -> *regnet1d_adacos_epoch100.pt*
+Learning curve -> *learning_curve.csv*
+Correspondence between numerical int label and crystal names -> *material_labels.csv*
 
 # Result
 Lithium compounds (8,172) at epoch 100
