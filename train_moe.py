@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
 	# arguments
 	input_size = 6000
-	l_experts = os.listdir('./pretrainedCPU')
+	l_experts = os.listdir('./pretrained')
 	data_path = args.data_path
 	batch_size = args.batch
 	device = 'cpu' #torch.device('cuda' if torch.cuda.is_available() else 'cpu')
