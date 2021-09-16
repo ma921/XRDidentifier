@@ -1,28 +1,18 @@
-"""
-Original: Shenda Hong, Oct 2019
-Modified: Masaki Adachi, Mar 2021
-"""
-
 import numpy as np
 from collections import Counter
 from tqdm import tqdm
 from matplotlib import pyplot as plt
 from sklearn.metrics import classification_report
 from models.net1d import Net1D, MyDataset
-from utils import *
-#from old.util import read_data_generated
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-#from torchsummary import summary
-from util.scheduler import CycleScheduler
 import argparse
 import pandas as pd
 import sys
-from apex import amp, optimizers
-from util.losses import AngularPenaltySMLoss
+from utils import *
 from utils_moe import *
 
 if __name__ == "__main__": 
@@ -50,7 +40,6 @@ if __name__ == "__main__":
 	# setup components
 	dataloaders = setup_dataloaders(data_path, batch_size, r_split=0.7, n_train=50000)
 	optimizer = optim.Adam(model.parameters(), lr=1e-3)
-	#loss_func = AngularPenaltySMLoss(loss_type='cosface')
 	loss_func = nn.NLLLoss()
 	loss_func = loss_func.to(device)
 
@@ -72,7 +61,6 @@ if __name__ == "__main__":
 
 			# prediction
 			input, label = tuple(t.to(device) for t in batch)
-			#label = label.long()
 			pred, aux_loss = model(input)
 			loss = loss_func(pred, label)
 			total_loss = loss + aux_loss
@@ -110,7 +98,6 @@ if __name__ == "__main__":
                 
 				# prediction
 				input, label = tuple(t.to(device) for t in batch)
-				#label = label.long()
 				pred, aux_loss = model(input)
 				loss = loss_func(pred, label)
 				total_loss = loss + aux_loss
@@ -158,7 +145,6 @@ if __name__ == "__main__":
 
 					# prediction
 					input, label = tuple(t.to(device) for t in batch)
-					#label = label.long()
 					pred, aux_loss = model(input)
 					loss = loss_func(pred, label)
 					total_loss = loss + aux_loss
