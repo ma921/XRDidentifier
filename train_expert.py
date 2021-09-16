@@ -63,6 +63,43 @@ class AdaCos(nn.Module):
 
         return output
 
+# copied and modified from https://github.com/cvqluu/Angular-Penalty-Softmax-Losses-Pytorch
+class AngularPenaltySMLoss(nn.Module):
+    def __init__(self, loss_type='cosface', eps=1e-7, s=None, m=None):
+        super(AngularPenaltySMLoss, self).__init__()
+        loss_type = loss_type.lower()
+        assert loss_type in  ['arcface', 'sphereface', 'cosface']
+        if loss_type == 'arcface':
+            self.s = 64.0 if not s else s
+            self.m = 0.5 if not m else m
+        if loss_type == 'sphereface':
+            self.s = 64.0 if not s else s
+            self.m = 1.35 if not m else m
+        if loss_type == 'cosface':
+            self.s = 30.0 if not s else s
+            self.m = 0.4 if not m else m
+        self.loss_type = loss_type
+        self.eps = eps
+
+    def forward(self, x, labels):
+        '''
+        input shape (N, in_features)
+        '''
+        assert len(x) == len(labels)
+        assert torch.min(labels) >= 0
+        wf = x
+        if self.loss_type == 'cosface':
+            numerator = self.s * (torch.diagonal(wf.transpose(0, 1)[labels]) - self.m)
+        if self.loss_type == 'arcface':
+            numerator = self.s * torch.cos(torch.acos(torch.clamp(torch.diagonal(wf.transpose(0, 1)[labels]), -1.+self.eps, 1-self.eps)) + self.m)
+        if self.loss_type == 'sphereface':
+            numerator = self.s * torch.cos(self.m * torch.acos(torch.clamp(torch.diagonal(wf.transpose(0, 1)[labels]), -1.+self.eps, 1-self.eps)))
+
+        excl = torch.cat([torch.cat((wf[i, :y], wf[i, y+1:])).unsqueeze(0) for i, y in enumerate(labels)], dim=0)
+        denominator = torch.exp(numerator) + torch.sum(torch.exp(self.s * excl), dim=1)
+        L = numerator - torch.log(denominator)
+        return -torch.mean(L)
+
 def spectra_loader(pickle_path):
     with open(pickle_path, mode="rb") as f:
         xrd_datasets = pickle.load(f)
@@ -316,7 +353,7 @@ if __name__ == '__main__':
         batch_size=args.batch,
     )
     model = load_model(settings)
-    criterion = nn.CrossEntropyLoss().to(settings[4])
+    criterion = AngularPenaltySMLoss(loss_type='cosface').to(settings[4])
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
     best_acc = 0.0
