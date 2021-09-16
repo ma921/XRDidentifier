@@ -58,26 +58,17 @@ python3 train_moe.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batc
 - Learning curve -> **learning_curve.csv**
 - Correspondence between numerical int label and crystal names -> **material_labels.csv**
 
-# Result
-- Database: Lithium compounds (8,172)
-- XRD: 2 theta 0 - 120 degree with 0.02 width (6,000 dims)
-- model: 1D-CNN (1D-RegNet) + Deep metric learning (AdaCos)
-- Loss: CrossEntropyLoss
-- Metric: Top 5 accuracy (%)
-- epoch: 100
-
-| Train         | Validation    | Test  |
-| ------------- |:-------------:| -----:|
-| 99.41         | 97.30         | 97.30 |
-
 # Citation
 ### Papers
 - AdaCos: https://arxiv.org/abs/1905.00292
 - 1D-RegNet: https://arxiv.org/abs/2008.04063
 - Physics-informed data augmentation: https://arxiv.org/abs/1811.08425v2
+- Sparsely-gated layer: https://arxiv.org/abs/1701.06538
 
 ### Implementation
 - AdaCos: https://github.com/4uiiurz1/pytorch-adacos/blob/master/metrics.py
 - 1D-RegNet: https://github.com/hsd1503/resnet1d
 - Physics-informed data augmentation: https://github.com/PV-Lab/autoXRD
 - Top k accuracy: https://gist.github.com/weiaicunzai/2a5ae6eac6712c70bde0630f3e76b77b
+- Angular Penalty Softmax Loss: https://github.com/cvqluu/Angular-Penalty-Softmax-Losses-Pytorch
+- Sparsely-gated layer: https://github.com/davidmrau/mixture-of-experts
