@@ -49,8 +49,8 @@ python3 train_expert.py --input ./XRD_epoch5.pkl --output learning_curve.csv --b
 - Correspondence between numerical int label and crystal names -> **material_labels.csv**
 
 # Train Mixture-of-Experts model
-You need to prepare both **pre-trained expert models** and **pickled single XRD spectra files**.
-You should store the pre-trained expert models in './pretrained' folder, and the pickled single XRD spectra files in './pickles' folder.
+You need to prepare both **pre-trained expert models** and **pickled single XRD spectra files**.  <br>
+You should store the pre-trained expert models in './pretrained' folder, and the pickled single XRD spectra files in './pickles' folder. <br>
 The number of experts are automatically adjusted according to the number of the pretrained expert models.
 
 ```
@@ -58,9 +58,8 @@ python3 train_moe.py --data_path ./pickles --save_model moe.pt --batch 64 --epoc
 ```
 
 **Output data**
-- Trained model -> **regnet1d_adacos_epoch100.pt**
-- Learning curve -> **learning_curve.csv**
-- Correspondence between numerical int label and crystal names -> **material_labels.csv**
+- Trained model -> **moe.pt**
+- Learning curve -> **moe.csv**
 
 # Citation
 ### Papers
