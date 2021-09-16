@@ -41,7 +41,7 @@ python3 convertXRDspectra.py --input ./lithium_datasets.pkl --batch 8 --n_aug 5
 
 # Train expert models
 ```
-python3 train_model.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batch 16 --n_epoch 100
+python3 train_expert.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batch 16 --n_epoch 100
 ```
 **Output data**
 - Trained model -> **regnet1d_adacos_epoch100.pt**
