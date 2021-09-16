@@ -1,11 +1,12 @@
 # XRDidentifier
 Pytorch implementation of XRD spectral identification from COD database. <br>
-Details are explained on my blog on Medium. <br>
-https://towardsdatascience.com/automatic-spectral-identification-using-deep-metric-learning-with-1d-regnet-and-adacos-8b7fb36f2d5f
+Details will be explained in the paper to be submitted to NeurIPS 2021 Workshop Machine Learning and the Physical Sciences (https://ml4physicalsciences.github.io/2021/). 
 
 # Features
-### model
-1D-CNN (1D-RegNet) + Deep metric learning (AdaCos)
+### expert model
+1D-CNN (1D-RegNet) + Hierarchical Deep metric learning (AdaCos + Angular Penalty Softmax Loss)
+### mixture of experts
+73 expert models tailered to general chemical elements with sparsely-gated layer
 ### data augmentation
 Physics-informed data augmentation
 
@@ -16,6 +17,8 @@ Physics-informed data augmentation
 - scikit-learn
 
 # Dataset Construction
+In the paper, I used ICSD dataset, but it is forbidden to redistribute the CIFs followed by their license.
+I will write the CIF dataset construction method using COD instead.
 ### 1. download cif files from COD
 Go to the COD homepage, search and download the cif URL list. <br>
 http://www.crystallography.net/cod/search.html
@@ -36,10 +39,20 @@ python3 convertXRDspectra.py --input ./lithium_datasets.pkl --batch 8 --n_aug 5
 ```
 **XRD_epoch5.pkl** will be created.
 
-# Train
+# Train expert models
 ```
 python3 train_model.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batch 16 --n_epoch 100
 ```
+**Output data**
+- Trained model -> **regnet1d_adacos_epoch100.pt**
+- Learning curve -> **learning_curve.csv**
+- Correspondence between numerical int label and crystal names -> **material_labels.csv**
+
+# Train Mixture-of-Experts model
+```
+python3 train_moe.py --input ./XRD_epoch5.pkl --output learning_curve.csv --batch 16 --n_epoch 100
+```
+
 **Output data**
 - Trained model -> **regnet1d_adacos_epoch100.pt**
 - Learning curve -> **learning_curve.csv**
