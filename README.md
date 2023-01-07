@@ -1,7 +1,7 @@
 # XRDidentifier
 Pytorch implementation of XRD spectral identification from COD database. <br>
-Details is written in the NeurIPS ML4PS workshop paper (https://ml4physicalsciences.github.io/2021/files/NeurIPS_ML4PS_2021_9.pdf).
-Blog explains this codes in a more intuitive way. (https://medium.com/towards-data-science/automatic-spectral-identification-using-deep-metric-learning-with-1d-regnet-and-adacos-8b7fb36f2d5f)
+Details is written in the NeurIPS ML4PS workshop paper (https://ml4physicalsciences.github.io/2021/files/NeurIPS_ML4PS_2021_9.pdf).<br>
+Blog explains this codes in a more intuitive way. (https://medium.com/towards-data-science/automatic-spectral-identification-using-deep-metric-learning-with-1d-regnet-and-adacos-8b7fb36f2d5f)<br>
 Please consider citing my paper if this is helpful for your paper (see the bottom).
 
 # Features
