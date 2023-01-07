@@ -1,6 +1,8 @@
 # XRDidentifier
 Pytorch implementation of XRD spectral identification from COD database. <br>
-Details will be explained in the paper to be submitted to NeurIPS 2021 Workshop Machine Learning and the Physical Sciences (https://ml4physicalsciences.github.io/2021/). 
+Details is written in the NeurIPS ML4PS workshop paper (https://ml4physicalsciences.github.io/2021/files/NeurIPS_ML4PS_2021_9.pdf).
+Blog explains this codes in a more intuitive way. (https://medium.com/towards-data-science/automatic-spectral-identification-using-deep-metric-learning-with-1d-regnet-and-adacos-8b7fb36f2d5f)
+Please consider citing my paper if this is helpful for your paper (see the bottom).
 
 # Features
 ### expert model
@@ -60,6 +62,17 @@ python3 train_moe.py --data_path ./pickles --save_model moe.pt --batch 64 --epoc
 **Output data**
 - Trained model -> **moe.pt**
 - Learning curve -> **moe.csv**
+
+## Cite as
+
+Please cite this work as
+```
+@article{adachimixture,
+  title={Mixture-of-Experts Ensemble with Hierarchical Deep Metric Learning for Spectroscopic Identification},
+  journal={Advances in Neural Information Processing Systems 34 (NeurIPS 2021) Workshop: Machine Learning and the Physical Science},
+  year={2021}
+}
+```
 
 # Citation
 ### Papers
