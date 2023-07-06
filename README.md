@@ -54,7 +54,7 @@ python3 train_expert.py --input ./XRD_epoch5.pkl --output learning_curve.csv --b
 # (Under construction) Train Mixture-of-Experts model
 The below is not ready currently. But if the dataset is not such large, the expert model should work.
 
-You need to prepare both **pre-trained expert models** and **pickled single XRD spectra files**.  <br>
+ <!---You need to prepare both **pre-trained expert models** and **pickled single XRD spectra files**.  <br>
 You should store the pre-trained expert models in './pretrained' folder, and the pickled single XRD spectra files in './pickles' folder. <br>
 The number of experts are automatically adjusted according to the number of the pretrained expert models.
 
@@ -65,6 +65,7 @@ python3 train_moe.py --data_path ./pickles --save_model moe.pt --batch 64 --epoc
 **Output data**
 - Trained model -> **moe.pt**
 - Learning curve -> **moe.csv**
+-->
 
 ## Cite as
 
